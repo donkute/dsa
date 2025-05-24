@@ -20,7 +20,7 @@ public:
     void show() {
         for (int i = 0; i < size; i++)
             cout << arr[i] << " ";
-        cout << endl;
+        cout << "\n";
     }
 
     Set intersection(Set& B) {
@@ -61,22 +61,28 @@ public:
 };
 
 int main() {
-    Set A, B, C;
-    cout << "Enter Coding participants:\n"; A.read();
-    cout << "Enter Project participants:\n"; B.read();
-    cout << "Enter Mastermind participants:\n"; C.read();
+    Set coding, project, mastermind;
 
-    cout << "\nIntersection of Coding and Project:\n";
-    A.intersection(B).show();
+    cout << "Enter Coding participants:\n"; 
+    coding.read();
 
-    cout << "Union of all events:\n";
-    A.set_union(B).set_union(C).show();
+    cout << "Enter Project participants:\n"; 
+    project.read();
 
-    cout << "Coding but not Mastermind:\n";
-    A.difference(C).show();
+    cout << "Enter Mastermind participants:\n"; 
+    mastermind.read();
 
-    cout << "Participants in all three:\n";
-    A.intersection(B).intersection(C).show();
+    cout << "\nParticipants in both Coding and Project:\n";
+    coding.intersection(project).show();
+
+    cout << "Participants in Coding or Project or Mastermind:\n";
+    coding.set_union(project).set_union(mastermind).show();
+
+    cout << "Participants in Coding but NOT in Mastermind:\n";
+    coding.difference(mastermind).show();
+
+    cout << "Participants in all three events:\n";
+    coding.intersection(project).intersection(mastermind).show();
 
     return 0;
 }
